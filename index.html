@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Car Dealer</title>
+</head>
+<body>
+  
+    <form id="carSelect" name='carSelect' onsubmit='return reserver()'>
+     <p>Select a car from the list.</p>
+
+<select name="type" id="carSelect" onchange='Info(this.value)'>
+  <option disabled hidden="" selected value="none"> Select a car type </option>
+  <option value="Midsize" >
+      Midsize </option>
+  <option value="Economy" >
+      Economy </option>
+  <option value="Tesla">
+      Tesla </option>
+</select>
+
+
+<p id="demo"></p>
+
+
+  <input id="firstname" name="name" onchange='Info(this.value)' placeholder='Your First and Last name ' type="text">
+
+  <br><br>
+ 
+<input type="button" value='submit' onclick="rent()"> 
+  
+  
+</form>
+
+<h3 id='Info'></h3>
+<p id='f1'></p>
+    <script src='dealer.js'></script>
+
+</body>
+</html>
