@@ -23,21 +23,20 @@ var cars = {
   name: "Jabier's Honda dealer"
 }
 
-var grabSelectorID = document.getElementById("carChoice");
+var grabSelectorID = document.getElementById("carSelect");
 for (var i = 0; i < cars.type.length; i += 1) {
   var car = document.createElement("OPTION");
   var carName = cars.type[i].name;
   car.value = i;
-  car.innerHTML = carName; // this could be simplified.
+  car.innerHTML = carName; 
   grabSelectorID.appendChild(car);
-  // this makes the child under the selector.
+ 
 
 }
 
 function decrementDisplay() {
-  var j = [parseInt(document.getElementById("carChoice").value)];
+  var j = [parseInt(document.getElementById("carSelect").value)];
   cars.type[j].available -= 1;
-  // if (cars.type[j].available < 1){alert("Choose Another car.")}
   document.getElementById("available").innerHTML = cars.type[j].available;
   document.getElementById("price").innerHTML = cars.type[j].price;
 }
@@ -45,7 +44,7 @@ function decrementDisplay() {
 function agreeToTerms() {
   // check available
   var rental = [];
-  var j = [parseInt(document.getElementById("carChoice").value)];
+  var j = [parseInt(document.getElementById("carSelect").value)];
   var carName = cars.type[j].name;
   var carAvailable = cars.type[j].available;
   var checkName = document.forms["reservationForm"]["name"].value;
