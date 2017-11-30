@@ -34,29 +34,32 @@ for (var i = 0; i < cars.type.length; i += 1) {
 
 }
 
-function decrementDisplay() {
-  var j = [parseInt(document.getElementById("carSelect").value)];
-  cars.type[j].available -= 1;
-  document.getElementById("available").innerHTML = cars.type[j].available;
-  document.getElementById("price").innerHTML = cars.type[j].price;
+function Display() {
+  var c = [parseInt(document.getElementById("carSelect").value)];
+  document.getElementById("available").innerHTML = cars.type[c].available;
+  document.getElementById("price").innerHTML = cars.type[c].price;
 }
 
 function agreeToTerms() {
   // check available
   var rental = [];
-  var j = [parseInt(document.getElementById("carSelect").value)];
-  var carName = cars.type[j].name;
-  var carAvailable = cars.type[j].available;
-  var checkName = document.forms["reservationForm"]["name"].value;
-  if (carAvailable <= 0) { alert("Choice Another Car Type.") }
+  var j = [parseInt(document.getElementById("carSelect").value)]; 
+  cars.type[j].available -= 1;
+  document.getElementById("available").innerHTML = cars.type[j].available;
+  document.getElementById("price").innerHTML = cars.type[j].price;
+  event.preventDefault()
+  var carName = cars.type[j].name; // checks for name of car type
+  var carAvailable = cars.type[j].available;  // pulls data from car type for available
+  var checkName = document.forms["reservationForm"]["name"].value; // checks for names
+  if (carAvailable <= 0) { alert("Choice Another Car Type.") } // checks if the car type is available
   // check for selection
-  else if (carName == "") {
-    alert("Choose A Car Type.");
+  else if (carName == "") { // checks if the field is blank
+    alert("Choose A Car Type."); // popup choose a car type message
   }
   // Check for name
-  else if (checkName == "") { alert("Enter Your Name.") } else {
-    rental.push(checkName);
-    rental.push(carName);
-    alert("Thank you")
+  else if (checkName == "") { alert("Enter Your Name.") } else { 
+    rental.push(checkName); // checks name
+    rental.push(carName); // checks Car Name
+    alert("Thank you") // popup Thank you message
   }
 }

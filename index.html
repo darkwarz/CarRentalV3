@@ -15,7 +15,8 @@
     <form id="reservationForm">
         <div id="dropdown">
             <label>Car Type</label><br>
-             <select id="carSelect" onchange="decrementDisplay()">
+             <select id="carSelect" onchange="Display()">
+                 <option disabled hidden="" selected value="none"> Select a car type </option>
              </select>
         </div>
         <div id="carInfo">
@@ -31,7 +32,7 @@
             <input type="checkbox" name="confirm" id="confirmation"><label>I agree to Terms and Conditions</label>
         </div>
         <br>
-        <button type="submit" onclick="agreeToTerms()">Submit</button>
+        <button type="submit" id="submit" onclick="agreeToTerms()">Submit</button>
     </form>
     <script src="script.js"></script>
 </body>
