@@ -4,40 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>Car Dealer</title>
+    <title>Document</title>
 </head>
 <body>
-  
-    <form id="carSelect" name='carSelect' onsubmit='return reserver()'>
-     <p>Select a car from the list.</p>
-
-<select name="type" id="carSelect" onchange='Info(this.value)'>
-  <option disabled hidden="" selected value="none"> Select a car type </option>
-  <!--<option value="Midsize" >-->
-  <!--    Midsize </option>-->
-  <!--<option value="Economy" >-->
-  <!--    Economy </option>-->
-  <!--<option value="Tesla">-->
-  <!--    Tesla </option>-->
-</select>
-
-
-<p id="demo"></p>
-
-
-  <input id="firstname" name="name" onchange='Info(this.value)' placeholder='Your First and Last name ' type="text">
-
-  <br><br>
- 
-<input type="button" value='submit' onclick="rent()"> 
-  
-  
-</form>
-
-<h3 id='Info'></h3>
-<p id='f1'></p>
-    <script src='dealer.js'></script>
-
+    
+    <h1>Car Rental</h1>
+    <h2 id="CarRental"></h2>
+    
+    <form id="reservationForm">
+        <div id="dropdown">
+            <label>Car Type</label><br>
+             <select id="carChoice" onchange="decrementDisplay()">
+               
+             </select>
+        </div>
+        <div id="carInfo">
+            <h2>Car Info</h2>
+            <p>Available: <span id="available" ></span></p>
+            <p>Price: <span id="price"></span></p>
+        </div>
+        <div>
+          <label>Enter Name:</label>
+          <input type="text" name="name" id="name" require="" placeholder="enter name">
+        </div>
+        <div id="confirmationSection">
+            <input type="checkbox" name="confirm" id="confirmation"><label>I agree to Terms and Conditions</label>
+        </div>
+        <br>
+        <button type="submit" onclick="agreeToTerms()">Submit</button>
+    </form>
+    <script src="script.js"></script>
 </body>
 </html>
+

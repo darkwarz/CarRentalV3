@@ -1,83 +1,63 @@
-var cDealer = { 
-    cars: [  
-    {
-     name: "Midsize",
-      price:500,
-      available:31
-    },    
-    {
-    name: "Economy Suv", 
-    price: 500,
-    available: 40
+var cars = {
+  type: [{
+      name: "Econo SUV",
+      price: "$350.00",
+      available: 6
     },
     {
-    name: "Economy Sedan",
-      price:400,
-      available:25
+      name: "Mid-Size",
+      price: "$120.00",
+      available: 10
     },
-    {                                                                       
-    name: "Tesla roadster",
-      price:1000,
-      available:10
-    } 
-
-            ],
-    
-    name: 'Enterprize Car Rentals'
-    };
-  
-    var uRenter = {
-    
-        Midsize:[],
-        EconomySuv:[],
-        EconomySedan:[],
-        Tesla:[]
-        
-    };
-    
-function Info(val){
-    var selection = cDealer[val];
-    document.getElementById('Info').innerHTML = val + " $" + selection.price + "<br>" + selection.available + " Available";
-}    
-    for (var i = 0; i < cDealer.cars.length; i++){
-    var option = document.createElement("OPTION");
-    var carTp = document.createElement("LABEL");
-    document.getElementById("carSelect").appendChild(option);
-    //option.setAttribute("type", "option");
-    option.setAttribute("name", "cars"); 
-    option.setAttribute("value", i); 
-    option.setAttribute("id", "car" + i); 
-    option.setAttribute("onclick", "myFunction(" + i + ")"); 
-    carTp.innerHTML = cDealer.cars[i].name; 
-    option.innerHTML = cDealer.cars[i].name; 
-    
-    document.getElementById("carSelect").appendChild(option);
-    //document.getElementById("carSelect").appendChild(carTp);
+    {
+      name: "Economy Sedan",
+      price: "$250.00",
+      available: 25
+    },
+    {
+      name: "Tesla roadster",
+      price: "$1000.00",
+      available: 5
+    }
+  ],
+  name: "Jabier's Honda dealer"
 }
-    document.getElementById("reserver").onsubmit = function(event) {
-    event.preventDefault();
-    
-    function rent(){
-        
-        var size = document.forms["carSelect"]['type'].value;
-        var reserver = document.forms["carSelect"]['name'].value;
-        
-        if( size == "none" && reserver ==""){
-            alert("Please choose a car type and enter your name");
-        }
-        else if( size == "none"){
-            alert("Please choose a car type");
-        }
-        
-        else if( reserver == "") {
-            alert("Please enter your name");
-        } 
-        else { 
-            uRenter[size].push({name: reserver});
-            cDealer[size].available--;
-            alert("Thank you, your reservation was succesful!");
-            console.log(uRenter);
-    }
-    return false;
-    }
-    
+
+var grabSelectorID = document.getElementById("carChoice");
+for (var i = 0; i < cars.type.length; i += 1) {
+  var car = document.createElement("OPTION");
+  var carName = cars.type[i].name;
+  car.value = i;
+  car.innerHTML = carName; // this could be simplified.
+  grabSelectorID.appendChild(car);
+  // this makes the child under the selector.
+
+}
+
+function decrementDisplay() {
+  var j = [parseInt(document.getElementById("carChoice").value)];
+  cars.type[j].available -= 1;
+  // if (cars.type[j].available < 1){alert("Choose Another car.")}
+  document.getElementById("available").innerHTML = cars.type[j].available;
+  document.getElementById("price").innerHTML = cars.type[j].price;
+}
+
+function agreeToTerms() {
+  // check available
+  var rental = [];
+  var j = [parseInt(document.getElementById("carChoice").value)];
+  var carName = cars.type[j].name;
+  var carAvailable = cars.type[j].available;
+  var checkName = document.forms["reservationForm"]["name"].value;
+  if (carAvailable <= 0) { alert("Choice Another Car Type.") }
+  // check for selection
+  else if (carName == "") {
+    alert("Choose A Car Type.");
+  }
+  // Check for name
+  else if (checkName == "") { alert("Enter Your Name.") } else {
+    rental.push(checkName);
+    rental.push(carName);
+    alert("Thank you")
+  }
+}
